@@ -16,7 +16,17 @@ namespace JobLoadBoard
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            string path = System.Diagnostics.Process.GetCurrentProcess().ProcessName;
+            System.Diagnostics.Process[] process = System.Diagnostics.Process.GetProcessesByName(path);
+            if (process.Length>1)
+            {
+                MessageBox.Show("系统已经在运行！");
+            }
+            else
+            {
+                  Application.Run(new MainForm());
+            }
+          
         }
     }
 }
